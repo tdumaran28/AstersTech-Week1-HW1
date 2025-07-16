@@ -64,12 +64,15 @@ Click the "PORTS" tab at the bottom of Codespaces.
 
 Find port 3000, and click the link to open your live website.
 
+If the site was created correctly, you should see a white "NextJS logo"
+
 ## Step 5: Create an API for Resume Data
-Open the pages/api/ folder.
 
-Create a new file called: "resume.js"
+Right click on the folder named "app" and create a new folder called "api"
 
-Paste the following code inside:
+Right click on the foler called "api" and create a new file called "resume.js"
+
+Open resume.js and paste the following code inside:
 
 ```js
 export default function handler(req, res) {
