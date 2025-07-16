@@ -35,31 +35,33 @@ Welcome to your first AstersTech homework assignment! In this project, you'll bu
 
 ## Step 3: Create a New Next.js App
 
-In the terminal at the bottom of Codespaces, run:
+In the terminal inside Codespaces, run the following command to generate a new Next.js project:
 
 ```bash
 npx create-next-app@latest . --use-npm
-If prompted, type y to overwrite existing files.
+✅ If prompted, type y to overwrite existing files.
 
-After a minute or two, your project will be ready to go!
+Wait a minute or two — your project will be ready to go!
 
 Step 4: Run Your Website
-In the terminal, run the development server:
+Start the development server:
 
 bash
 Copy
 Edit
 npm run dev
-Then, click the "PORTS" tab at the bottom of Codespaces.
+Then:
 
-Find port 3000, and click the link to view your website live.
+Click the "PORTS" tab at the bottom of Codespaces.
+
+Find port 3000, and click the link to open your live website.
 
 Step 5: Create an API for Resume Data
-Go to the pages/api folder.
+Open the pages/api/ folder.
 
-Create a new file called resume.js.
+Create a new file called: resume.js
 
-Add this code:
+Paste the following code inside:
 
 js
 Copy
@@ -83,12 +85,17 @@ export default function handler(req, res) {
     }
   });
 }
-Test it by visiting: http://localhost:3000/api/resume
+✅ Test your API route by visiting:
+http://localhost:3000/api/resume
 
 Step 6: Create Your Resume Components
-Create a new folder called components in the root directory.
+In the root of your project, create a new folder named:
 
-Inside it, create:
+nginx
+Copy
+Edit
+components
+Inside components, create the following files:
 
 css
 Copy
@@ -98,8 +105,7 @@ components/About.js
 components/Skills.js
 components/Projects.js
 components/Contact.js
-Example Header.js:
-
+Example: components/Header.js
 jsx
 Copy
 Edit
@@ -111,10 +117,10 @@ export default function Header({ name, title }) {
     </header>
   );
 }
-Build the other components similarly using props and inline styling.
+Use similar structure for your other components. Pass in props and style them using inline styles.
 
 Step 7: Fetch Resume Data and Display It
-Replace your pages/index.js with:
+Replace the contents of pages/index.js with the following code:
 
 jsx
 Copy
@@ -143,7 +149,9 @@ export default function Home({ resume }) {
   );
 }
 Step 8: Customize and Style Your Site
-Use inline styles inside your components:
+Use inline styles inside each component to make things look nice.
+
+Example:
 
 jsx
 Copy
@@ -151,41 +159,51 @@ Edit
 <div style={{ backgroundColor: "#f0f0f0", padding: "1rem", borderRadius: "8px" }}>
   <p>{about}</p>
 </div>
-Make each section visually distinct.
+✅ Tips:
+
+Make each section visually distinct
+
+Use padding, margin, background color, font size, etc.
 
 Step 9: Optional Add-Ons (Extra Credit 🎁)
-Add a profile image (/public/avatar.png)
+If you're ahead of schedule, try adding any of these:
 
-Display social media links
+🖼️ Add a profile image to /public/avatar.png
 
-Use emojis in section headers (e.g., 💼 Projects)
+🔗 Include social media links in your contact section
 
-Add hover effects or simple animations
+💼 Use emojis in your section titles (like 💼 Projects)
+
+🌀 Add hover effects or simple animations using inline styles
 
 Step 10: Commit and Push Your Work
-Click the Source Control (Git) icon in the sidebar.
+Click the Source Control (Git) icon in the left sidebar.
 
-Write a commit message (e.g., Added resume components).
+Write a brief commit message (e.g., Added resume components).
 
-Click the ✓ Commit, then click Push to upload to GitHub.
+Click the ✓ Commit button.
+
+Then click Push (cloud icon) to upload your code to GitHub.
 
 Step 11: Submit Your Homework
 Copy your GitHub repo URL (e.g., https://github.com/yourname/week1-resume-nextjs)
 
-Share the link with your instructor
+Submit this link to your instructor
 
-Troubleshooting Tips
-If the site doesn’t run, recheck your terminal and confirm you ran:
+🛠 Troubleshooting Tips
+Site won’t start?
+Make sure you ran:
 
 bash
 Copy
 Edit
 npm run dev
-If your resume data doesn't load:
+API not working?
 
-Double-check that your resume.js file is inside pages/api/
+Double-check that resume.js is located inside pages/api/
 
-Make sure the fetch URL matches: http://localhost:3000/api/resume
+Visit: http://localhost:3000/api/resume
 
-Still stuck? Ask your instructor! 😄
+Still stuck?
+Ask your instructor! 😄
 
