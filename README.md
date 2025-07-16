@@ -96,21 +96,20 @@ export default function handler(req, res) {
 }
 ```
 
-✅ Test your API route by visiting:
-
-http://localhost:3000/api/resume
-
 ## Step 6: Create Your Resume Components
-In the root of your project, create a new folder named:
+In the root of your project (the folder called "yourname"), create a new folder named:
 
-"/components"
+"components"
+
 Inside components, create the following files:
 
-components/Header.js
-components/About.js
-components/Skills.js
-components/Projects.js
-components/Contact.js
+```
+Header.js
+About.js
+Skills.js
+Projects.js
+Contact.js
+```
 
 Example: components/Header.js
 ```js
