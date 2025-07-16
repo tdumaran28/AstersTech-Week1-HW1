@@ -38,7 +38,7 @@ Welcome to your first AstersTech homework assignment! In this project, you'll bu
 In the terminal inside Codespaces, run the following command to generate a new Next.js project:
 
 ```bash
-npx create-next-app@latest "your name" --use-npm
+npx create-next-app@latest "yourname" --use-npm
 ```
 ✅ If prompted, type y to overwrite existing files.
 
