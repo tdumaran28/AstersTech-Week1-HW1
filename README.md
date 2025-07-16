@@ -102,7 +102,7 @@ components/Projects.js
 components/Contact.js
 
 Example: components/Header.js
-```
+```js
 export default function Header({ name, title }) {
   return (
     <header>
@@ -116,7 +116,7 @@ Use similar structure for your other components. Pass in props and style them us
 
 ## Step 7: Fetch Resume Data and Display It
 Replace the contents of pages/index.js with the following code:
-```
+```js
 import Header from "@/components/Header";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -145,7 +145,7 @@ export default function Home({ resume }) {
 Use inline styles inside each component to make things look nice.
 
 Example:
-```
+```js
 <div style={{ backgroundColor: "#f0f0f0", padding: "1rem", borderRadius: "8px" }}>
   <p>{about}</p>
 </div>
