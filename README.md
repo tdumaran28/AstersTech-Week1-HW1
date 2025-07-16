@@ -39,17 +39,17 @@ In the terminal inside Codespaces, run the following command to generate a new N
 
 ```bash
 npx create-next-app@latest . --use-npm
+```
 ✅ If prompted, type y to overwrite existing files.
 
 Wait a minute or two — your project will be ready to go!
 
 Step 4: Run Your Website
 Start the development server:
-
-bash
-Copy
-Edit
+```bash
 npm run dev
+```
+
 Then:
 
 Click the "PORTS" tab at the bottom of Codespaces.
@@ -59,13 +59,11 @@ Find port 3000, and click the link to open your live website.
 Step 5: Create an API for Resume Data
 Open the pages/api/ folder.
 
-Create a new file called: resume.js
+Create a new file called: "resume.js"
 
 Paste the following code inside:
 
-js
-Copy
-Edit
+```js
 export default function handler(req, res) {
   res.status(200).json({
     name: "Your Name",
@@ -85,30 +83,26 @@ export default function handler(req, res) {
     }
   });
 }
+```
+
 ✅ Test your API route by visiting:
+
 http://localhost:3000/api/resume
 
 Step 6: Create Your Resume Components
 In the root of your project, create a new folder named:
 
-nginx
-Copy
-Edit
-components
+"/components"
 Inside components, create the following files:
 
-css
-Copy
-Edit
 components/Header.js
 components/About.js
 components/Skills.js
 components/Projects.js
 components/Contact.js
+
 Example: components/Header.js
-jsx
-Copy
-Edit
+```
 export default function Header({ name, title }) {
   return (
     <header>
@@ -117,14 +111,12 @@ export default function Header({ name, title }) {
     </header>
   );
 }
+```
 Use similar structure for your other components. Pass in props and style them using inline styles.
 
 Step 7: Fetch Resume Data and Display It
 Replace the contents of pages/index.js with the following code:
-
-jsx
-Copy
-Edit
+```
 import Header from "@/components/Header";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
@@ -148,17 +140,16 @@ export default function Home({ resume }) {
     </main>
   );
 }
+```
 Step 8: Customize and Style Your Site
 Use inline styles inside each component to make things look nice.
 
 Example:
-
-jsx
-Copy
-Edit
+```
 <div style={{ backgroundColor: "#f0f0f0", padding: "1rem", borderRadius: "8px" }}>
   <p>{about}</p>
 </div>
+```
 ✅ Tips:
 
 Make each section visually distinct
@@ -193,11 +184,9 @@ Submit this link to your instructor
 🛠 Troubleshooting Tips
 Site won’t start?
 Make sure you ran:
-
-bash
-Copy
-Edit
+```bash
 npm run dev
+```
 API not working?
 
 Double-check that resume.js is located inside pages/api/
