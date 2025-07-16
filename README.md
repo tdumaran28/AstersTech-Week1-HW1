@@ -37,12 +37,20 @@ Welcome to your first AstersTech homework assignment! In this project, you'll bu
 
 In the terminal inside Codespaces, run the following command to generate a new Next.js project:
 
+Make sure to replace "yourname" with the actual name. Remember this can't have capital letters, spaces, and special characters.
+
 ```bash
 npx create-next-app@latest "yourname" --use-npm
 ```
 ✅ If prompted, type y to overwrite existing files.
 
 Wait a minute or two — your project will be ready to go!
+
+Now enter the new folder that was created. Remember replace "yourname" with the name of the folder.
+
+```bash
+cd "yourname"
+```
 
 ## Step 4: Run Your Website
 Start the development server:
