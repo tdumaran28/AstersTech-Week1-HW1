@@ -164,15 +164,86 @@ export default function Home({ resume }) {
   );
 }
 ```
-## Step 8: Customize and Style Your Site
-Use inline styles inside each component to make things look nice.
+## ✅ Step 8: Add Tailwind CSS and Style Your Site
 
-Example:
+Tailwind CSS provides a utility-first approach for styling, making your components cleaner and easier to maintain.
+
+---
+
+### **1. Install Tailwind CSS**
+Run the following commands inside your Next.js project folder:
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+This creates:
+- `tailwind.config.js` (Tailwind configuration)
+- `postcss.config.js` (PostCSS configuration)
+
+---
+
+### **2. Configure `tailwind.config.js`**
+Update the `content` property so Tailwind knows where your components and pages are:
+
 ```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+---
+
+### **3. Add Tailwind Directives to Global CSS**
+Open `styles/globals.css` and add the following at the top:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+This loads Tailwind's core styles.
+
+---
+
+### **4. Start Using Tailwind in Components**
+Now you can remove inline styles and use Tailwind utility classes:
+
+**Before (inline styles):**
+```jsx
 <div style={{ backgroundColor: "#f0f0f0", padding: "1rem", borderRadius: "8px" }}>
   <p>{about}</p>
 </div>
 ```
+
+**After (Tailwind):**
+```jsx
+<div className="bg-gray-100 p-4 rounded-lg">
+  <p>{about}</p>
+</div>
+```
+
+---
+
+✅ **Now you can use any Tailwind class like `text-center`, `bg-blue-500`, `flex`, `grid`, etc.**  
+Run your development server:
+
+```bash
+npm run dev
+```
+
+Your Next.js app now supports Tailwind CSS styling. Use the TailWindCSS documentation to add cool styling to your website: https://divmagic.com/tailwind  
+
 ✅ Tips:
 
 Make each section visually distinct
@@ -217,5 +288,11 @@ Double-check that resume.js is located inside pages/api/
 Visit: http://localhost:3000/api/resume
 
 Still stuck?
+
 Ask your instructor! 😄
+
+Some Important Links : 
+1. https://divmagic.com/tailwind
+2. https://react.dev/learn
+3. https://www.semrush.com/blog/html-tags-list/
 
