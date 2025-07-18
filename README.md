@@ -124,6 +124,8 @@ export default function Header({ name, title }) {
 ```
 Use similar structure for your other components. Use your knowledge of HTML and CSS that you learned during class to change the code to display something else. Make sure to change the title of the function from "header" to something tha tmatches the component you are working on. For each component pass in the information you defined in resume.js. Make sure to include a place for every variable. If you ever get stuck or need help with HTMl, reach out to your instructor or use AI to create a good component for you.
 
+Use this list of HTML tags to help you on your journey: https://www.semrush.com/blog/html-tags-list/
+
 Example: components/About.js
 ```js
 export default function About({ about }) {
