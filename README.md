@@ -70,9 +70,11 @@ If the site was created correctly, you should see a white "NextJS logo"
 
 Right click on the folder named "app" and create a new folder called "api"
 
-Right click on the foler called "api" and create a new file called "resume.js"
+Right click on the foler called "api" and create a new folder called "resume"
 
-Open resume.js and paste the following code inside:
+Finally, right click on the resume folder and create a new file (not folder) called "route.js"
+
+Open route.js and paste the following code inside:
 
 ```js
 export default function handler(req, res) {
