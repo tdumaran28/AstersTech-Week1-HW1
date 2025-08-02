@@ -66,39 +66,7 @@ Find port 3000, and click the link to open your live website.
 
 If the site was created correctly, you should see a white "NextJS logo"
 
-## Step 5: Create an API for Resume Data
-
-Right click on the folder named "app" and create a new folder called "api"
-
-Right click on the foler called "api" and create a new folder called "resume"
-
-Finally, right click on the resume folder and create a new file (not folder) called "route.js"
-
-Open route.js and paste the following code inside:
-
-```js
-export default function handler(req, res) {
-  res.status(200).json({
-    name: "Your Name",
-    title: "Aspiring Fullstack Developer",
-    about: "Write a short bio about yourself here.",
-    skills: ["JavaScript", "React", "Node.js", "HTML", "CSS"],
-    projects: [
-      {
-        name: "Portfolio Website",
-        description: "A site to showcase my work.",
-        url: "https://example.com"
-      }
-    ],
-    contact: {
-      email: "your@email.com",
-      phone: "123-456-7890"
-    }
-  });
-}
-```
-
-## Step 6: Create Your Resume Components
+## Step 5: Create Your Resume Components
 In the root of your project (the folder called "yourname"), create a new folder named:
 
 "components"
@@ -106,57 +74,90 @@ In the root of your project (the folder called "yourname"), create a new folder 
 Inside components, create the following files:
 
 ```
-Header.js
-About.js
-Skills.js
-Projects.js
-Contact.js
+Header.jsx
+About.jsx
+Skills.jsx
+Projects.jsx
+Contact.jsx
 ```
 
-Example: components/Header.js
+Example: components/Header.jsx
 ```js
+// This function defines a "Header" component
+// Components in React are like reusable chunks of a webpage
 export default function Header({ name, title }) {
+  // The `name` and `title` values come from the parent file (like page.tsx)
+  // and are displayed using JSX, which is a mix of HTML and JavaScript
+
   return (
+    // <header> is an HTML element that usually contains titles or intro info
     <header>
+      {/* <h1> is used for main headings. We're making the text bigger using inline styles */}
       <h1 style={{ fontSize: "2rem" }}>{name}</h1>
+
+      {/* <p> is used for paragraphs. We're changing the text color using a hex color */}
       <p style={{ color: "#555" }}>{title}</p>
     </header>
   );
 }
+
 ```
 Use similar structure for your other components. Use your knowledge of HTML and CSS that you learned during class to change the code to display something else. Make sure to change the title of the function from "header" to something tha tmatches the component you are working on. For each component pass in the information you defined in resume.js. Make sure to include a place for every variable. If you ever get stuck or need help with HTMl, reach out to your instructor or use AI to create a good component for you.
 
 Use this list of HTML tags to help you on your journey: https://www.semrush.com/blog/html-tags-list/
 
-Example: components/About.js
-```js
+Example: components/About.jsx
+```jsx
+// This component displays a short bio or description about the person
 export default function About({ about }) {
+  // The `about` variable is a piece of text passed from the main page
+
   return (
+    // <div> is a general-purpose container for content
     <div>
+      {/* We're placing the bio inside a paragraph and coloring the text */}
       <p style={{ color: "#555" }}>{about}</p>
     </div>
   );
 }
 ```
+Example: components/Skills.jsx
 
-## Step 7: Fetch Resume Data and Display It
+## Step 6: Fetch Resume Data and Display It
 Replace the contents of app/page.tsx with the following code:
-```js
+```jsx
+// We're importing all the components we made from the components folder
 import Header from "@/components/Header";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 
-export async function getStaticProps() {
-  const res = await fetch("http://localhost:3000/api/resume");
-  const resume = await res.json();
-  return { props: { resume } };
-}
+// This function is the main homepage of your website
+export default function Home() {
+  // This object holds all your resume information
+  const resume = {
+    name: "Your Name", // This will be passed to the Header
+    title: "Aspiring Fullstack Developer", // Also for the Header
+    about: "Write a short bio about yourself here.", // For About section
+    skills: ["JavaScript", "React", "Node.js", "HTML", "CSS"], // For Skills section
+    projects: [
+      {
+        name: "Portfolio Website", // Project title
+        description: "A site to showcase my work.", // What it's about
+        url: "https://example.com" // Link to the project
+      }
+    ],
+    contact: {
+      email: "your@email.com",
+      phone: "123-456-7890"
+    }
+  };
 
-export default function Home({ resume }) {
   return (
+    // This is the main area where all content is shown
     <main style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
+      {/* Each component is called with the matching data from resume */}
       <Header name={resume.name} title={resume.title} />
       <About about={resume.about} />
       <Skills skills={resume.skills} />
@@ -166,132 +167,6 @@ export default function Home({ resume }) {
   );
 }
 ```
-## ✅ Step 8: Add Tailwind CSS and Style Your Site
-
-Tailwind CSS provides a utility-first approach for styling, making your components cleaner and easier to maintain.
-
----
-
-### **1. Install Tailwind CSS**
-Run the following commands inside your Next.js project folder:
-
-```bash
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
-
-This creates:
-- `tailwind.config.js` (Tailwind configuration)
-- `postcss.config.js` (PostCSS configuration)
-
----
-
-### **2. Configure `tailwind.config.js`**
-Update the `content` property so Tailwind knows where your components and pages are:
-
-```js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-```
-
----
-
-### **3. Add Tailwind Directives to Global CSS**
-Open `styles/globals.css` and add the following at the top:
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-This loads Tailwind's core styles.
-
----
-
-### **4. Start Using Tailwind in Components**
-Now you can remove inline styles and use Tailwind utility classes:
-
-**Before (inline styles):**
-```jsx
-<div style={{ backgroundColor: "#f0f0f0", padding: "1rem", borderRadius: "8px" }}>
-  <p>{about}</p>
-</div>
-```
-
-**After (Tailwind):**
-```jsx
-<div className="bg-gray-100 p-4 rounded-lg">
-  <p>{about}</p>
-</div>
-```
-
----
-
-✅ **Now you can use any Tailwind class like `text-center`, `bg-blue-500`, `flex`, `grid`, etc.**  
-Run your development server:
-
-```bash
-npm run dev
-```
-
-Your Next.js app now supports Tailwind CSS styling. Use the TailWindCSS documentation to add cool styling to your website: https://divmagic.com/tailwind  
-
-✅ Tips:
-
-Make each section visually distinct
-
-Use padding, margin, background color, font size, etc.
-
-## Step 9: Optional Add-Ons (Extra Credit 🎁)
-If you're ahead of schedule, try adding any of these:
-
-🖼️ Add a profile image to /public/avatar.png
-
-🔗 Include social media links in your contact section
-
-💼 Use emojis in your section titles (like 💼 Projects)
-
-🌀 Add hover effects or simple animations using inline styles
-
-## Step 10: Commit and Push Your Work
-Click the Source Control (Git) icon in the left sidebar.
-
-Write a brief commit message (e.g., Added resume components).
-
-Click the ✓ Commit button.
-
-Then click Push (cloud icon) to upload your code to GitHub.
-
-## Step 11: Submit Your Homework
-Copy your GitHub repo URL (e.g., https://github.com/yourname/week1-resume-nextjs)
-
-Submit this link to your instructor
-
-🛠 Troubleshooting Tips
-Site won’t start?
-Make sure you ran:
-```bash
-npm run dev
-```
-API not working?
-
-Double-check that resume.js is located inside pages/api/
-
-Visit: http://localhost:3000/api/resume
-
-Still stuck?
-
-Ask your instructor! 😄
 
 Some Important Links : 
 1. https://divmagic.com/tailwind
